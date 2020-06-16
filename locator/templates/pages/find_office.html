@@ -1,0 +1,128 @@
+{% extends "templates/Layout/customweb.html" %}
+{% block content %}
+<div id="thankyoucontent" style="margin: 40px;padding-left: 100px;padding-right: 100px;">
+    
+    <div class="col-md-12">
+    <div class="select-wrapper"><label>State</label><select class="form-control form-select simpler-select" id="select-state"><option value="" data-parent-value="">Please select</option>
+    	{%if states%}
+    	{%for state in states%}
+    	<option value="{{state.name}}" class="has-children">{{state.name}}</option>
+		{%endfor%}
+    	{%endif%}
+ </select></div>
+  <div class="select-wrapper"><label>City</label><select class="form-control form-select simpler-select" id="select-city"><option value="" data-parent-value="">Please select</option>
+    	{%if citys%}
+    	{%for city in citys%}
+    	<option value="{{city.name}}" class="has-children">{{city.name}}</option>
+		{%endfor%}
+    	{%endif%}
+ </select></div>
+ <div class="select-wrapper">
+ <div class="views-exposed-widget views-submit-button">
+      <input type="submit" id="find-office" name="" value="Find" class="form-submit secondary">    </div>
+  </div>
+</div>
+  <div class="view-content col-md-12">
+  	<div class="col-md-6">
+      <div class="item-list" style="margin-top: 20px;">  
+
+        <ul>   
+      {%if locations%}
+      {%for ad in locations%}       
+      	<li class="views-row views-row-1 views-row-odd views-row-first views-row-last" style="border: solid 1px #d9d9d9;padding: 15px;">  
+  <div class="views-field views-field-title">    <span class="views-label views-label-title">Address</span>    <span class="field-content">{{ad.address}}</span>  </div>  
+  <div class="views-field views-field-field-offices-pincode">    <span class="views-label views-label-field-offices-pincode">Pincode</span>    <div class="field-content">{{ad.pincode}} </div>  </div>  
+  <div class="views-field views-field-field-offices-state">    <span class="views-label views-label-field-offices-state">City</span>    <div class="field-content">{{ad.city}}</div>  </div>
+  <div class="views-field views-field-field-offices-state">    <span class="views-label views-label-field-offices-state">State</span>    <div class="field-content">{{ad.state}}</div>  </div>  
+  <div class="views-field views-field-field-offices-phone-no">    <span class="views-label views-label-field-offices-phone-no">Phone no</span>    <div class="field-content">{{ad.pnone_no}} {%if ad.alternate_phone_no%}/ {{ad.alternate_phone_no}}{%endif%}</div>  </div></li>
+  {%endfor%}
+  {%endif%}
+      </ul></div>  
+  </div>
+  <div class="col-md-6">
+
+  </div>
+        </div>
+ 
+</div>
+<style type="text/css">
+.item-list ul li .views-field .views-label, .page-find-dealers .view-find-dealer .view-content .item-list ul li .views-field .views-label {
+    width: 65px;
+}
+.item-list ul li .views-field .views-label {
+    float: left;
+    font-size: 0.875em;
+    margin-right: 4px;
+}
+.item-list ul li .views-field .field-content, .page-find-dealers .view-find-dealer .view-content .item-list ul li .views-field .field-content {
+    display: table;
+}
+.item-list ul li .views-field .field-content {
+    overflow: hidden;
+    font-size: 0.875em;
+}
+.views-exposed-widget .form-submit {
+    margin-top: 2.2em;
+    width: 100%;
+    padding: 0.094em 0.875em;
+    font-size: 1.250em;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 500;
+    display: inline-block;
+    vertical-align: bottom;
+    /*background: #035cb5;*/
+    height: 40px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+}
+	.select-wrapper {
+    display: inline-block;
+    margin-right: 20px;
+}
+.item-list ul li .views-field {
+    clear: both;
+}
+.not-front .views-exposed-form .views-exposed-widget .views-widget .select-wrapper {
+    padding: 0 5px;
+    margin-bottom: 5px;
+    float: left;
+    /* width: 25%; */
+}
+.item-list ul {
+    margin: 0 0 0.75em 0;
+    padding: 0;
+}
+.views-exposed-form .views-exposed-widget {
+    float: left;
+    padding: .5em 1em 0 0;
+}
+select.form-control, select.form-select {
+    background: #fff url(../images/down-arrow.png) no-repeat right 0.625em top 50%;
+    border: solid 1px #d9d9d9;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    font-family: 'Calibri';
+    font-size: 100%;
+    color: #a6a6a6;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    padding: 0.313em 0.625em;
+    width: 100%;
+    height: 40px;
+    padding-right: 35px;
+}
+</style>
+{% endblock %}
+{% block script %}
+<script>
+   $('#find-office').on("click", function(){
+   	var city = $('#select-city').val();
+   	var state =  $('#select-state').val()
+   	window.location.href="/find-office?state="+state+"&&city="+city
+   })
+</script>
+{% endblock %}

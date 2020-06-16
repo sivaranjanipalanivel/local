@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include locator *.css
+recursive-include locator *.csv
+recursive-include locator *.html
+recursive-include locator *.ico
+recursive-include locator *.js
+recursive-include locator *.json
+recursive-include locator *.md
+recursive-include locator *.png
+recursive-include locator *.py
+recursive-include locator *.svg
+recursive-include locator *.txt
+recursive-exclude locator *.pyc
