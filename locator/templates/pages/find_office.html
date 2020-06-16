@@ -2,15 +2,15 @@
 {% block content %}
 <div id="thankyoucontent" style="margin: 40px;padding-left: 100px;padding-right: 100px;">
     
-    <div class="col-md-12">
-    <div class="select-wrapper"><label>State</label><select class="form-control form-select simpler-select" id="select-state"><option value="" data-parent-value="">Please select</option>
+    <div class="col-md-12 view-content" style="margin-left: 15px;">
+    <div class="select-wrapper"><label>State</label><select class="form-control form-select simpler-select" id="select-state" style="width: 300px;"><option value="" data-parent-value="">Please select</option>
     	{%if states%}
     	{%for state in states%}
     	<option value="{{state.name}}" class="has-children">{{state.name}}</option>
 		{%endfor%}
     	{%endif%}
  </select></div>
-  <div class="select-wrapper"><label>City</label><select class="form-control form-select simpler-select" id="select-city"><option value="" data-parent-value="">Please select</option>
+  <div class="select-wrapper"><label>City</label><select class="form-control form-select simpler-select" id="select-city" style="width: 300px;"><option value="" data-parent-value="">Please select</option>
     	{%if citys%}
     	{%for city in citys%}
     	<option value="{{city.name}}" class="has-children">{{city.name}}</option>
